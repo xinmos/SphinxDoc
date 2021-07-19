@@ -62,3 +62,6 @@ extensions = [
 ```
 make html
 ```
+
+## 生成 PDF
+> 在项目根目录下使用 make latex 命令生成 tex 文件， 最后在 build/latex/ 目录下运行 两遍 xelatex rst_pdf.tex 命令即可生成 PDF 文件。
