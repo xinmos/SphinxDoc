@@ -64,4 +64,10 @@ make html
 ```
 
 ## 生成 PDF
-> 在项目根目录下使用 make latex 命令生成 tex 文件， 最后在 build/latex/ 目录下运行 两遍 xelatex rst_pdf.tex 命令即可生成 PDF 文件。
+```
+使用 markdown 模块
+安装：
+pip install markdown
+
+再通过 chrome 浏览器将网页转成 pdf
+```

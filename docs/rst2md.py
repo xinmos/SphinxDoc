@@ -1,5 +1,31 @@
 import os
+import markdown
 
+html = '''
+<html lang="zh-cn">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="content-type" />
+<link href="github.css" rel="stylesheet">
+</head>
+<body>
+'''
+footer = '''
+</body>
+</html>
+'''
+
+EXTENSIONS = [
+	'markdown.extensions.tables',
+	"markdown.extensions.fenced_code",
+	"markdown.extensions.sane_lists",
+	"markdown.extensions.smarty",
+	"markdown.extensions.codehilite",
+	"markdown.extensions.footnotes",
+	"markdown.extensions.meta",
+	"markdown.extensions.toc"
+]
+
+NOT_SAVE_DIR = []
 
 def parse_rst_file(file, level):
 	title = ""
@@ -39,7 +65,7 @@ if __name__ == '__main__':
 	level = 1
 	for root, _, files in os.walk(file_path):
 		dir = os.path.basename(root)
-		if files and dir != "config":
+		if files and dir not in NOT_SAVE_DIR:
 			md_file = [item for item in files if item.endswith(".md")]
 			rst_file = [item for item in files if item.endswith(".rst")]
 			if rst_file:
@@ -54,5 +80,9 @@ if __name__ == '__main__':
 						file_str += md_content
 		level += 1
 
-	with open("./readme.md", "wt", encoding="utf-8") as f:
-		f.write(file_str)
+	# with open("./readme.md", "wt", encoding="utf-8") as f:
+	# 	f.write(file_str)
+
+	html_str = html + markdown.markdown(file_str, extensions=EXTENSIONS) + footer
+	with open("./readme.html", "wt", encoding="utf-8") as f:
+		f.write(html_str)
