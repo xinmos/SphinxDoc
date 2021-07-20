@@ -6,3 +6,4 @@ cxtest 项目 API 文档
    :caption: Contents:
 
    get
+   delete
