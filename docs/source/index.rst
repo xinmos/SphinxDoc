@@ -11,3 +11,4 @@ Sphinx Doc 测试项目
    :caption: Contents:
 
    api/index
+   config/index
